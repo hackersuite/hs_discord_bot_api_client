@@ -17,7 +17,7 @@
 		"inlineSources": true,
 		"sourceRoot": "src",
 		"outDir": "dist",
-		"declaration": false,
+		"declaration": true,
 		"removeComments": false,
 		"alwaysStrict": true,
 		"allowSyntheticDefaultImports": true,
