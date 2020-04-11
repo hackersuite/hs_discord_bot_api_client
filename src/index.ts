@@ -58,10 +58,10 @@ export async function getTeam(authId: string): Promise<APITeam> {
 	return response.data.team as APITeam;
 }
 
-export async function getDiscordResource(name: string): Promise<APIDiscordResource> {
+export async function getDiscordResource(name: string): Promise<string> {
 	// Will throw if resource is not found
 	const response: any = await axios.get(`${API_BASE}/api/v1/discord/resources/${name}`);
-	return response.data as APIDiscordResource;
+	return response.data.discordId;
 }
 
 export function createVerificationHmac(authId: string, hmacKey: string): string {
