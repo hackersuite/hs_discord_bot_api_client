@@ -25,6 +25,11 @@ export interface APITeam {
 	teamNumber: number;
 }
 
+export interface APIDiscordResource {
+	name: string;
+	discordId: string;
+}
+
 interface AccountLinkResponse {
 	message: string;
 }
@@ -51,6 +56,12 @@ export async function getTeam(authId: string): Promise<APITeam> {
 	// Will throw if team is not found
 	const response: any = await axios.get(`${API_BASE}/api/v1/teams/${authId}`);
 	return response.data.team as APITeam;
+}
+
+export async function getDiscordResource(name: string): Promise<APIDiscordResource> {
+	// Will throw if resource is not found
+	const response: any = await axios.get(`${API_BASE}/api/v1/discord/resources/${name}`);
+	return response.data as APIDiscordResource;
 }
 
 export function createVerificationHmac(authId: string, hmacKey: string): string {

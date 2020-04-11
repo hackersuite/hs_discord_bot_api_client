@@ -25,14 +25,13 @@
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
 		"skipLibCheck": true,
-		"esModuleInterop": true,
-		"resolveJsonModule": true
+		"esModuleInterop": true
 	},
 	"exclude": [
 		"src/**/*.test.ts",
 		"src/**/*.spec.ts",
 		"src/**/*.test.js",
 		"src/**/*.spec.js",
-		"bin/start.js"
+		"dist/index.d.ts"
 	]
 }
