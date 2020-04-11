@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { createHmac } from 'crypto';
 
 enum AuthLevel {
 	Unverified,
@@ -24,6 +25,10 @@ export interface APITeam {
 	teamNumber: number;
 }
 
+interface AccountLinkResponse {
+	message: string;
+}
+
 const API_BASE: string = process.env.HS_DISCORD_API || '';
 
 export async function getUsers(): Promise<APIUser[]> {
@@ -46,4 +51,17 @@ export async function getTeam(authId: string): Promise<APITeam> {
 	// Will throw if team is not found
 	const response: any = await axios.get(`${API_BASE}/api/v1/teams/${authId}`);
 	return response.data.team as APITeam;
+}
+
+export function createVerificationHmac(authId: string, hmacKey: string): string {
+	const hash = createHmac('sha256', hmacKey)
+		.update(authId)
+		.digest('base64');
+	return Buffer.from(`${authId}:${hash}`).toString('base64');
+}
+
+export function linkAccount(authId: string, code: string, state: string): Promise<AccountLinkResponse> {
+	return axios.get(`${API_BASE}/api/v1/discord/verify`, {
+		params: { code, state }
+	});
 }
