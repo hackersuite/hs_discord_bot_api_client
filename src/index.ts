@@ -1,12 +1,17 @@
 import axios from 'axios';
 import { createHmac } from 'crypto';
 
-enum AuthLevel {
+export enum AuthLevel {
 	Unverified,
 	Applicant,
 	Attendee,
 	Volunteer,
 	Organiser
+}
+
+export interface APIDiscordResource {
+	name: string;
+	discordId: string;
 }
 
 export interface APIUser {
@@ -16,6 +21,7 @@ export interface APIUser {
 	email: string;
 	name: string;
 	team?: string;
+	roles: APIDiscordResource[];
 }
 
 export interface APITeam {
@@ -25,16 +31,25 @@ export interface APITeam {
 	teamNumber: number;
 }
 
-export interface APIDiscordResource {
-	name: string;
-	discordId: string;
+export interface RoleOptions {
+	method: 'add' | 'set' | 'remove';
+	roles: string[];
 }
 
 interface AccountLinkResponse {
 	message: string;
 }
 
-const API_BASE: string = process.env.HS_DISCORD_API || '';
+interface ModifyRolesResponse {
+	user: {
+		discordId: string;
+		authId: string;
+		roles: APIDiscordResource[];
+	};
+}
+
+const API_BASE = process.env.HS_DISCORD_API;
+if (!API_BASE) throw new Error('HS_DISCORD_API environment variable is unset');
 
 export async function getUsers(): Promise<APIUser[]> {
 	const response: any = await axios.get(`${API_BASE}/api/v1/users`);
@@ -45,6 +60,11 @@ export async function getUser(discordId: string): Promise<APIUser> {
 	// Will throw if user is not found
 	const response: any = await axios.get(`${API_BASE}/api/v1/users/${discordId}`);
 	return response.data.user as APIUser;
+}
+
+export async function modifyUserRoles(discordId: string, options: RoleOptions) {
+	const response: any = await axios.put(`${API_BASE}/api/v1/users/${discordId}/roles`, options);
+	return response.data as ModifyRolesResponse;
 }
 
 export async function getTeams(): Promise<APITeam[]> {
