@@ -12,9 +12,6 @@
     "type": "git",
     "url": "git+https://github.com/unicsmcr/hs_discord_bot_api_client.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "keywords": [
     "Discord",
     "Hackathon",
