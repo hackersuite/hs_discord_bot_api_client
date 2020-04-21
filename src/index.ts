@@ -38,6 +38,7 @@ export interface RoleOptions {
 
 interface AccountLinkResponse {
 	message: string;
+	url: string;
 }
 
 interface ModifyRolesResponse {
@@ -91,8 +92,9 @@ export function createVerificationHmac(authId: string, hmacKey: string): string 
 	return Buffer.from(`${authId}:${hash}`).toString('base64');
 }
 
-export function linkAccount(authId: string, code: string, state: string): Promise<AccountLinkResponse> {
-	return axios.get(`${API_BASE}/api/v1/discord/verify`, {
+export async function linkAccount(authId: string, code: string, state: string): Promise<AccountLinkResponse> {
+	const response: any = await axios.get(`${API_BASE}/api/v1/discord/verify`, {
 		params: { code, state }
 	});
+	return response.data as AccountLinkResponse;
 }
