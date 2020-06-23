@@ -1,8 +1,8 @@
 # hs_discord_bot_api_client
 
-![Tests](https://github.com/unicsmcr/hs_discord_bot_api_client/workflows/Tests/badge.svg)
+![Lint](https://github.com/unicsmcr/hs_discord_bot_api_client/workflows/Lint/badge.svg)
 
-A client for the HackerSuite Discord Bot API
+A client for the [HackerSuite Discord Bot API](https://github.com/unicsmcr/hs_discord_bot_api), written in TypeScript.
 
 ## License
 
