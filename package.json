@@ -4,9 +4,9 @@
   "description": "A client for the HackerSuite Discord Bot API",
   "main": "dist/index.js",
   "scripts": {
-    "prebuild": "npm run test",
     "build": "rimraf dist && tsc",
-    "test": "eslint src --ext .ts"
+    "test": "npm run lint",
+    "lint": "eslint src --ext .ts"
   },
   "repository": {
     "type": "git",
