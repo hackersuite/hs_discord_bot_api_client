@@ -36,6 +36,10 @@ export interface RoleOptions {
 	roles: string[];
 }
 
+interface AccountSyncResponse {
+	message: string;
+}
+
 interface AccountLinkResponse {
 	message: string;
 	url: string;
@@ -97,4 +101,9 @@ export async function linkAccount(authId: string, code: string, state: string): 
 		params: { code, state }
 	});
 	return response.data as AccountLinkResponse;
+}
+
+export async function syncAccount(discordId: string): Promise<AccountSyncResponse> {
+	const response: any = await axios.put(`${API_BASE}/api/v1/users/${discordId}/sync`);
+	return response.data as AccountSyncResponse;
 }
