@@ -53,8 +53,8 @@ interface ModifyRolesResponse {
 	};
 }
 
+if (!process.env.HS_DISCORD_API) throw new Error('HS_DISCORD_API environment variable is unset');
 const API_BASE = process.env.HS_DISCORD_API;
-if (!API_BASE) throw new Error('HS_DISCORD_API environment variable is unset');
 
 export async function getUsers(): Promise<APIUser[]> {
 	const response: any = await axios.get(`${API_BASE}/api/v1/users`);
