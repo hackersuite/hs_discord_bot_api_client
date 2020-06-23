@@ -1,4 +1,4 @@
-# hs_discord_bot_api_client
+# HackerSuite: Discord Bot API Client
 
 ![Lint](https://github.com/unicsmcr/hs_discord_bot_api_client/workflows/Lint/badge.svg)
 
