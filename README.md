@@ -1,8 +1,8 @@
-# HackerSuite: Discord Bot API Client
+# Hacker Suite: Discord Bot API Client
 
 ![Lint](https://github.com/unicsmcr/hs_discord_bot_api_client/workflows/Lint/badge.svg)
 
-A client for the [HackerSuite Discord Bot API](https://github.com/unicsmcr/hs_discord_bot_api), written in TypeScript.
+A client for the [Hacker Suite Discord Bot API](https://github.com/unicsmcr/hs_discord_bot_api), written in TypeScript.
 
 ## License
 
