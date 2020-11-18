@@ -1,6 +1,6 @@
 {
   "name": "@unicsmcr/hs_discord_bot_api_client",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A client for the HackerSuite Discord Bot API",
   "main": "dist/index.js",
   "scripts": {
