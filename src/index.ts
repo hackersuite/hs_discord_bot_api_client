@@ -1,14 +1,6 @@
 import axios from 'axios';
 import { createHmac } from 'crypto';
 
-export enum AuthLevel {
-	Unverified,
-	Applicant,
-	Attendee,
-	Volunteer,
-	Organiser
-}
-
 export interface APIDiscordResource {
 	name: string;
 	discordId: string;
@@ -17,7 +9,6 @@ export interface APIDiscordResource {
 export interface APIUser {
 	authId: string;
 	discordId: string;
-	authLevel: AuthLevel;
 	email: string;
 	name: string;
 	team?: string;
